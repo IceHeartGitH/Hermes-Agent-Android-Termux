@@ -1,49 +1,49 @@
 # Hermes Agent Android Termux
 
-Инсталация на Hermes Agent на Android чрез Termux.
+Install Hermes Agent on Android using Termux.
 
-Този repo е за прост public install flow. След инсталация използваш само:
+After installation, start Hermes with:
 
 ```sh
 hermes
 ```
 
-## Важно за съвместимостта
+## Compatibility
 
-Не е 100% гарантирано, че ще тръгне на всеки телефон.
+This installer is intended for modern Android devices running the F-Droid version of Termux.
 
-Най-рискови са по-стари Android версии, особено под Android 15, защото Hermes Agent изисква съвместим Python/runtime environment.
+It is not guaranteed to work on every device. Older Android versions, especially versions below Android 15, may fail because Hermes Agent and its dependencies require a compatible Python/runtime environment.
 
-Потвърден reference: модерен Samsung S26 Ultra + Termux от F-Droid.
+## Requirements
 
-## Изисквания
+- Android device
+- Termux from F-Droid
+- Internet connection
+- Enough storage for Python, Node.js, Rust/build tools, and Hermes Agent
 
-- Android телефон
-- Termux от F-Droid, не старата Google Play версия
-- Интернет връзка
-- Свободно място за Python, Node, Rust/build tools и Hermes Agent
-
-Termux от F-Droid:
+Install Termux from F-Droid:
 
 ```text
 https://f-droid.org/packages/com.termux/
 ```
 
-## Инсталация
+Do not use the outdated Google Play build of Termux.
 
-Копирай цялата команда в Termux:
+## Install
+
+Copy the full command into Termux:
 
 ```sh
 pkg update -y && pkg install -y git && cd ~ && if [ -d Hermes-Agent-Android-Termux/.git ]; then cd Hermes-Agent-Android-Termux && git pull --ff-only; else git clone https://github.com/IceHeartGitH/Hermes-Agent-Android-Termux.git && cd Hermes-Agent-Android-Termux; fi && bash install.sh --force
 ```
 
-## Стартиране
+## Start Hermes
 
 ```sh
 hermes
 ```
 
-## Проверка
+## Verify
 
 ```sh
 hermes --version
@@ -51,54 +51,53 @@ hermes doctor
 bash verify.sh
 ```
 
-## Setup на модел/provider
+## Configure model/provider
 
-Ако installer-ът не е завършил interactive setup, пусни:
+If setup did not complete during installation, run:
 
 ```sh
 hermes setup
 ```
 
-## Update
+## Update Hermes
 
-След успешна инсталация Hermes core се обновява с official updater:
+After a successful installation, update Hermes Agent with:
 
 ```sh
 hermes update
 ```
 
-## Android storage
+## Android shared storage
 
-Ако искаш Hermes да работи с shared storage:
+To allow Termux access to Android shared storage, run:
 
 ```sh
 termux-setup-storage
 ```
 
-После разреши Android permission popup-а.
+Approve the Android permission prompt when it appears.
 
 ## Uninstall
 
-Внимание: това трие локалния Hermes runtime/data от тази инсталация.
+This removes the Hermes runtime/data directory created by this installer.
 
 ```sh
 bash scripts/uninstall-hermes-android-termux.sh --yes
 ```
 
-## Какво прави installer-ът
+## What the installer does
 
-- проверява, че си в Termux;
-- инсталира нужните Termux packages;
-- осигурява Python версия, съвместима с Hermes Agent;
-- използва official Hermes installer;
-- създава командата `hermes`;
-- прави базова проверка.
+- checks that it is running in Termux;
+- installs required Termux packages;
+- ensures a Hermes-compatible Python version;
+- runs the official Hermes Agent installer;
+- creates the `hermes` command;
+- runs basic verification.
 
-## Какво НЕ съдържа този repo
+## What this repository does not include
 
-- tokens или credentials;
+- credentials or tokens;
 - auth files;
-- sessions/logs/state database;
-- private repo flow;
-- global install mode;
-- Obsidian/private project memory.
+- sessions, logs, or state databases;
+- device-specific notes;
+- unrelated project workflows.

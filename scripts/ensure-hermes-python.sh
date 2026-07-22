@@ -206,7 +206,7 @@ export UV_PYTHON="$py_abs"
 export PATH="$shim_dir:\$PATH"
 EOF
 
-  # Match the working reference phone: python/python3 point to python3.13.
+  # Ensure python/python3 use the selected Hermes-compatible interpreter.
   ln -sfr "$py_abs" "$PREFIX/bin/python" || true
   ln -sfr "$py_abs" "$PREFIX/bin/python3" || true
   if [ -n "$pip_bin" ]; then
@@ -258,7 +258,7 @@ case "$status" in
     install_pinned_termux_python313
     ;;
   broken)
-    echo "ERROR: Current python cannot execute. If the error mentions memfd_create, this device/Android build is not compatible with the pinned Python package used for the reference phone." >&2
+    echo "ERROR: Current python cannot execute. If the error mentions memfd_create, this device/Android build may not be compatible with the pinned Python package." >&2
     exit 1
     ;;
   *)

@@ -41,7 +41,7 @@ else
   echo 'Hermes command missing; installer will install/repair it.'
 fi
 
-for p in "$HOME/.hermes-venv" "$HOME/storage/shared" "/storage/emulated/0" "$HOME/storage/shared/Hermes Agent Projects"; do
+for p in "$HOME/.hermes-venv" "$HOME/storage/shared" "/storage/emulated/0"; do
   if [ -e "$p" ]; then
     echo "EXISTS $p"
   else

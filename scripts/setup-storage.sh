@@ -23,13 +23,7 @@ else
 fi
 
 if storage_ready; then
-  mkdir -p "$HOME/storage/shared/Hermes Agent Projects"
-  mkdir -p "$HOME/storage/shared/Hermes Agent Projects/Bootstrap Logs"
-  mkdir -p "$HOME/storage/shared/Hermes Agent Projects/Templates"
+  echo "OK storage: $HOME/storage/shared"
 else
-  mkdir -p "$HOME/Hermes Agent Projects"
+  echo "WARN storage: $HOME/storage/shared"
 fi
-
-for p in "$HOME/storage/shared" /storage/emulated/0 "$HOME/storage/downloads"; do
-  [ -d "$p" ] && [ -r "$p" ] && [ -x "$p" ] && echo "OK storage: $p" || echo "WARN storage: $p"
-done
