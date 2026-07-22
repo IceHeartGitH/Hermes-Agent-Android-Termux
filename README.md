@@ -21,15 +21,15 @@ It is not guaranteed to work on every device. Older Android versions, especially
 - Internet connection
 - Enough storage for Python, Node.js, Rust/build tools, and Hermes Agent
 
-Install Termux from F-Droid:
+Install Termux App from F-Droid:
 
 ```text
 https://f-droid.org/packages/com.termux/
 ```
 
-Do not use the outdated Google Play build of Termux.
+Do not use the outdated Google Play build of Termux App.
 
-## Install
+## Install Hermes Agent
 
 Copy the full command into Termux:
 
@@ -37,13 +37,13 @@ Copy the full command into Termux:
 pkg update -y && pkg install -y git && cd ~ && if [ -d Hermes-Agent-Android-Termux/.git ]; then cd Hermes-Agent-Android-Termux && git pull --ff-only; else git clone https://github.com/IceHeartGitH/Hermes-Agent-Android-Termux.git && cd Hermes-Agent-Android-Termux; fi && bash install.sh --force
 ```
 
-## Start Hermes
+## Start Hermes Agent
 
 ```sh
 hermes
 ```
 
-## Verify
+## Verify Hermes Agent
 
 ```sh
 hermes --version
@@ -59,9 +59,9 @@ If setup did not complete during installation, run:
 hermes setup
 ```
 
-## Update Hermes
+## Update Hermes Agent
 
-After a successful installation, update Hermes Agent with:
+After a successful installation, if you want to update Hermes Agent use this command:
 
 ```sh
 hermes update
