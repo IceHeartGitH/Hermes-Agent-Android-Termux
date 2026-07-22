@@ -16,6 +16,21 @@ Why this is useful:
 
 This repository is not a fork of Hermes Agent. It is an Android/Termux bootstrap installer that prepares the environment and then runs the official Hermes Agent installer.
 
+
+## Visual overview
+
+<p align="center">
+  <img src="assets/readme/termux-terminal-install.jpg" alt="Termux terminal install screen on Android" width="160" />
+  <img src="assets/readme/termux-system-overview.jpg" alt="Termux system overview on Android" width="160" />
+  <img src="assets/readme/hermes-agent-assistant.jpg" alt="Hermes Agent assistant screen on Android" width="160" />
+</p>
+
+<p align="center">
+  <img src="assets/readme/hermes-agent-coding.jpg" alt="Hermes Agent coding workflow on Android" width="160" />
+  <img src="assets/readme/hermes-agent-automation.jpg" alt="Hermes Agent automation workflow on Android" width="160" />
+  <img src="assets/readme/hermes-agent-pocket-ai.jpg" alt="Hermes Agent pocket AI assistant on Android" width="160" />
+</p>
+
 ## Compatibility
 
 This installer is intended for modern Android devices running the F-Droid version of Termux.
