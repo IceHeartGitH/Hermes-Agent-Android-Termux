@@ -1,0 +1,66 @@
+# Secrets / credentials
+.env
+.env.*
+!.env.example
+auth.json
+hosts.yml
+*.token
+*.key
+*.pem
+*.crt
+*.p12
+*.pfx
+*secret*
+!*secret-scan.sh
+*credential*
+*credentials*
+
+# Hermes runtime / private state
+.hermes/
+.hermes-venv/
+**/auth.json
+**/state.db
+**/sessions/
+**/logs/
+**/memories/
+**/checkpoints/
+**/cron/outputs/
+
+# Python / Node / caches
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.cache/
+.venv/
+venv/
+node_modules/
+.npm/
+dist/
+build/
+
+# Databases / archives / backups
+*.db
+*.sqlite
+*.sqlite3
+*.bak
+*.backup
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.xz
+backups/
+backup/
+
+# Android / Termux local noise
+storage/
+termux-snap-*.sh
+*.log
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
