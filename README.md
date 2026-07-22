@@ -85,12 +85,22 @@ This removes the Hermes runtime/data directory created by this installer.
 bash scripts/uninstall-hermes-android-termux.sh --yes
 ```
 
+
+## Troubleshooting
+
+If installation fails:
+
+1. Make sure Termux is installed from F-Droid.
+2. Run `pkg update -y && pkg upgrade -y` and try again.
+3. Check the Android version. Older Android versions may not support the Python runtime required by Hermes Agent.
+4. Run `bash verify.sh` and include the output when opening an issue.
+
 ## What the installer does
 
 - checks that it is running in Termux;
 - installs required Termux packages;
 - ensures a Hermes-compatible Python version;
-- runs the official Hermes Agent installer;
+- downloads and runs the official Hermes Agent installer from `https://hermes-agent.nousresearch.com/install.sh`;
 - creates the `hermes` command;
 - runs basic verification.
 

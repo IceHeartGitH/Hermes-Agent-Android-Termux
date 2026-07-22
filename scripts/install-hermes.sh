@@ -94,8 +94,8 @@ restore_previous_entrypoints() {
   hash -r
 }
 
-log "Downloading official Hermes installer for isolated venv"
-installer_tmp="$(mktemp /data/data/com.termux/files/usr/tmp/hermes-official-venv-install-XXXXXX.sh)"
+log "Downloading official Hermes installer"
+installer_tmp="$(mktemp /data/data/com.termux/files/usr/tmp/hermes-official-install-XXXXXX.sh)"
 curl -fsSL "$installer_url" -o "$installer_tmp"
 
 "$HERMES_PYTHON" - "$installer_tmp" <<'PY'
@@ -168,7 +168,7 @@ print(f'Patched Termux fast CLI PROJECT_ROOT bug: {path}')
 PY
 }
 
-write_venv_launcher_file() {
+write_hermes_launcher_file() {
   local launcher="$1"
   local hermes_bin="$HERMES_INSTALL_DIR/venv/bin/hermes"
   [ -x "$hermes_bin" ] || fail "Hermes entrypoint missing: $hermes_bin"
@@ -186,7 +186,7 @@ EOF
 
 install_hermes_launcher() {
   # Public repo model: users only need the `hermes` command.
-  write_venv_launcher_file "$PREFIX/bin/hermes"
+  write_hermes_launcher_file "$PREFIX/bin/hermes"
 }
 
 bash -n "$installer_tmp"
@@ -205,7 +205,7 @@ restore_previous_entrypoints
 install_hermes_launcher
 hash -r
 
-log "Installing lightweight runtime helper inside venv"
+log "Installing lightweight runtime helper"
 "$HERMES_INSTALL_DIR/venv/bin/python" -m pip install --disable-pip-version-check 'duckduckgo_search==3.9.11'
 
 
