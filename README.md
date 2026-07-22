@@ -1,18 +1,20 @@
-# Hermes Agent Android Termux
+# Hermes Agent for Android using Termux
 
-Install Hermes Agent on Android using Termux.
+Install Hermes Agent on Android through Termux and turn your phone into a portable AI assistant environment.
 
-This repository is a public Android/Termux bootstrap installer. It prepares the Termux environment and then runs the official Hermes Agent installer from:
+Hermes Agent is a powerful terminal-based AI assistant from Nous Research. It can help with coding, research, writing, automation, system tasks, file operations, web-enabled workflows, and multi-step problem solving directly from your command line.
 
-```text
-https://hermes-agent.nousresearch.com/install.sh
-```
+The general idea of this project is simple: prepare Android and Termux so Hermes Agent can run reliably on a phone, then install the official Hermes Agent in a clean, repeatable way.
 
-After installation, start Hermes with:
+Why this is useful:
 
-```sh
-hermes
-```
+- carry a capable AI assistant in your pocket;
+- work from an Android phone without needing a laptop nearby;
+- use a real terminal workflow with files, Git, scripts, and development tools;
+- run longer tasks, local helpers, and command-line automations from Termux;
+- keep the setup reproducible with a single public installer command.
+
+This repository is not a fork of Hermes Agent. It is an Android/Termux bootstrap installer that prepares the environment and then runs the official Hermes Agent installer.
 
 ## Compatibility
 
@@ -115,6 +117,15 @@ Copy the full command into Termux:
 ```sh
 pkg update -y && pkg install -y git && cd ~ && if [ -d Hermes-Agent-Android-Termux/.git ]; then cd Hermes-Agent-Android-Termux && git pull --ff-only; else git clone https://github.com/IceHeartGitH/Hermes-Agent-Android-Termux.git && cd Hermes-Agent-Android-Termux; fi && bash install.sh --force
 ```
+
+Important installation notes:
+
+- the installation can take 15 to 30 minutes, and sometimes longer, depending on the phone, CPU, storage speed, network speed, and whether native packages need to build;
+- if there is no clear error on the screen, do not interrupt the installation just because it looks slow;
+- if the installation continues for more than 45 to 60 minutes with no progress, stop it manually with `Ctrl+C`, then run the same install command again;
+- start with at least 50% battery, or keep the phone connected to power during installation;
+- increase the screen timeout before starting, if your phone allows it;
+- if the phone does not allow a long screen timeout, keep the screen active manually while installation is running.
 
 What this command does:
 
