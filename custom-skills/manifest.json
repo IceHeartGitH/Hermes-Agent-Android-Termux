@@ -1,0 +1,185 @@
+{
+  "name": "Hermes Agent Android Termux Custom Skills Pack",
+  "version": "1.0.0",
+  "description": "Curated optional custom skills and local design reference libraries for Hermes Agent on Android Termux.",
+  "paths": {
+    "skills": "custom-skills/",
+    "library": "custom-skills-library/awesome-design-md/"
+  },
+  "counts": {
+    "marketing": 34,
+    "design": 21,
+    "android": 1,
+    "total_skills": 56,
+    "awesome_design_md_files": 74
+  },
+  "packs": {
+    "all": {
+      "marketing": [
+        "ads",
+        "ai-seo",
+        "analytics",
+        "competitor-profiling",
+        "content-strategy",
+        "copy-editing",
+        "copywriting",
+        "cro",
+        "customer-research",
+        "image",
+        "launch",
+        "marketing-ideas",
+        "marketing-plan",
+        "marketing-psychology",
+        "offers",
+        "pricing",
+        "product-marketing",
+        "programmatic-seo",
+        "schema",
+        "seo-audit",
+        "seo-competitor-pages",
+        "seo-content",
+        "seo-content-brief",
+        "seo-geo",
+        "seo-geo-site-audits",
+        "seo-google",
+        "seo-images",
+        "seo-local",
+        "seo-maps",
+        "seo-page",
+        "seo-schema",
+        "seo-sitemap",
+        "seo-technical",
+        "site-architecture"
+      ],
+      "creative": [
+        "banner-design",
+        "brand",
+        "design",
+        "design-system",
+        "slides",
+        "ui-styling",
+        "ui-ux-pro-max",
+        "brandkit",
+        "brutalist-skill",
+        "gpt-tasteskill",
+        "image-to-code-skill",
+        "imagegen-frontend-mobile",
+        "imagegen-frontend-web",
+        "minimalist-skill",
+        "output-skill",
+        "redesign-skill",
+        "soft-skill",
+        "stitch-skill",
+        "taste-skill",
+        "taste-skill-v1",
+        "awesome-design-md-library"
+      ],
+      "android": [
+        "android-adb-system-inspector"
+      ]
+    },
+    "marketing": {
+      "marketing": [
+        "ads",
+        "ai-seo",
+        "analytics",
+        "competitor-profiling",
+        "content-strategy",
+        "copy-editing",
+        "copywriting",
+        "cro",
+        "customer-research",
+        "image",
+        "launch",
+        "marketing-ideas",
+        "marketing-plan",
+        "marketing-psychology",
+        "offers",
+        "pricing",
+        "product-marketing",
+        "programmatic-seo",
+        "schema",
+        "seo-audit",
+        "seo-competitor-pages",
+        "seo-content",
+        "seo-content-brief",
+        "seo-geo",
+        "seo-geo-site-audits",
+        "seo-google",
+        "seo-images",
+        "seo-local",
+        "seo-maps",
+        "seo-page",
+        "seo-schema",
+        "seo-sitemap",
+        "seo-technical",
+        "site-architecture"
+      ]
+    },
+    "design": {
+      "creative": [
+        "banner-design",
+        "brand",
+        "design",
+        "design-system",
+        "slides",
+        "ui-styling",
+        "ui-ux-pro-max",
+        "brandkit",
+        "brutalist-skill",
+        "gpt-tasteskill",
+        "image-to-code-skill",
+        "imagegen-frontend-mobile",
+        "imagegen-frontend-web",
+        "minimalist-skill",
+        "output-skill",
+        "redesign-skill",
+        "soft-skill",
+        "stitch-skill",
+        "taste-skill",
+        "taste-skill-v1",
+        "awesome-design-md-library"
+      ]
+    },
+    "android": {
+      "android": [
+        "android-adb-system-inspector"
+      ]
+    },
+    "library": {
+      "library": [
+        "awesome-design-md"
+      ]
+    }
+  },
+  "sources": [
+    {
+      "name": "marketingskills",
+      "repo": "https://github.com/coreyhaines31/marketingskills",
+      "staged_count": 48,
+      "active_count": 34
+    },
+    {
+      "name": "claude-seo",
+      "repo": "https://github.com/AgriciDaniel/claude-seo",
+      "staged_count": 25,
+      "active_count": "subset integrated through marketing/seo skills"
+    },
+    {
+      "name": "ui-ux-pro-max-skill",
+      "repo": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+      "active_count": 7
+    },
+    {
+      "name": "taste-skill",
+      "repo": "https://github.com/Leonxlnx/taste-skill",
+      "active_count": 13
+    },
+    {
+      "name": "awesome-design-md",
+      "repo": "https://github.com/VoltAgent/awesome-design-md",
+      "design_md_count": 74,
+      "active_skill": "awesome-design-md-library"
+    }
+  ]
+}

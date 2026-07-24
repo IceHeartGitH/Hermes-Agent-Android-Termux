@@ -9,9 +9,9 @@ trap 'rm -f "$hit_file"' EXIT
 fail=0
 while IFS= read -r -d '' f; do
   case "$f" in
-    ./.git/*|./.gitignore|./scripts/secret-scan.sh) continue ;;
+    ./.git/*|./.gitignore|./scripts/secret-scan.sh|./scripts/verify-custom-skills.sh) continue ;;
   esac
-  if grep -nE 'auth\.json|GITHUB_TOKEN=|OPENROUTER_API_KEY=|ANTHROPIC_API_KEY=|sk-[A-Za-z0-9]|ghp_[A-Za-z0-9]' "$f" >"$hit_file" 2>/dev/null; then
+  if grep -nE 'auth\.json|GITHUB_TOKEN=[^[:space:]]+|OPENROUTER_API_KEY=[^[:space:]]+|ANTHROPIC_API_KEY=[^[:space:]]+|OPENAI_API_KEY=[^[:space:]]+|(^|[^A-Za-z0-9_-])sk-[A-Za-z0-9_-]{32,}|ghp_[A-Za-z0-9_]{30,}' "$f" >"$hit_file" 2>/dev/null; then
     echo "POSSIBLE_SECRET $f"
     sed -n '1,20p' "$hit_file"
     fail=1

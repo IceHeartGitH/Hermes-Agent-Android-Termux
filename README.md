@@ -153,7 +153,77 @@ What this command does:
 
 This command only clones or updates this public installer repository. It does not include credentials, sessions, logs, or device-specific files.
 
-## 6. Verify the installation
+## 6. Optional custom skills and DESIGN.md library
+
+This repository also includes an optional custom skills pack. It is not installed by default.
+
+The files are downloaded together with this repository, so after running the install command above they are already available locally in the checkout:
+
+```text
+custom-skills/
+custom-skills-library/
+```
+
+What is included:
+
+```text
+custom-skills/marketing/   34 marketing, SEO, GEO, CRO, copywriting, analytics, schema, content, and launch skills
+custom-skills/creative/    21 UI/UX, design-system, brand, taste, redesign, image-to-code, and DESIGN.md workflow skills
+custom-skills/android/      1 Android ADB system-inspection helper skill
+```
+
+Total optional custom skills:
+
+```text
+56 skills
+```
+
+The reference library is separate:
+
+```text
+custom-skills-library/awesome-design-md/   74 brand/style DESIGN.md reference files
+```
+
+Install everything:
+
+```sh
+bash scripts/install-custom-skills.sh --all
+```
+
+Install by group:
+
+```sh
+bash scripts/install-custom-skills.sh --marketing
+bash scripts/install-custom-skills.sh --design
+bash scripts/install-custom-skills.sh --android
+bash scripts/install-custom-skills.sh --library
+```
+
+Preview without changing files:
+
+```sh
+bash scripts/install-custom-skills.sh --all --dry-run
+```
+
+Verify the bundled pack:
+
+```sh
+bash scripts/verify-custom-skills.sh
+```
+
+After installing custom skills, start a fresh Hermes session if the current session does not immediately see them.
+
+### Prompt for the installed Hermes Agent
+
+You can also ask the newly installed Hermes Agent to inspect and install the custom pack for you. Start Hermes from this repository folder and paste this prompt:
+
+```text
+You are running inside the Hermes-Agent-Android-Termux repository on Android Termux. Inspect the local folders `custom-skills/` and `custom-skills-library/`. Explain what skills and libraries are available, count them by group, then offer to install all custom skills, only marketing skills, only design skills, only Android helper skills, or only the DESIGN.md library. If I choose an option, use `bash scripts/install-custom-skills.sh <option>` and verify with `bash scripts/verify-custom-skills.sh --installed`. Do not copy auth files, sessions, memories, cron jobs, or private device state.
+```
+
+The custom skills are optional. The normal Hermes Agent installation works without them.
+
+## 7. Verify the installation
 
 Run:
 
@@ -170,7 +240,7 @@ hermes doctor
 
 If verification fails, see the Troubleshooting section below.
 
-## 7. Run Hermes setup
+## 8. Run Hermes setup
 
 Configure your model/provider:
 
@@ -180,7 +250,7 @@ hermes setup
 
 Follow the interactive prompts.
 
-## 8. Start Hermes
+## 9. Start Hermes
 
 Start the interactive CLI:
 
@@ -197,7 +267,7 @@ hermes model
 hermes tools
 ```
 
-## 9. Update Hermes Agent
+## 10. Update Hermes Agent
 
 After a successful installation, update Hermes Agent with:
 
@@ -207,7 +277,7 @@ hermes update
 
 To update this Android/Termux installer repository itself, rerun the install command from section 5. It will fast-forward the local checkout before running `install.sh`.
 
-## 10. Troubleshooting
+## 11. Troubleshooting
 
 If installation fails:
 
@@ -231,7 +301,7 @@ If background work stops unexpectedly:
 3. run `termux-wake-lock` while long-running work is needed;
 4. reopen Termux after phone reboot.
 
-## 11. Uninstall Hermes Agent
+## 12. Uninstall Hermes Agent
 
 To remove the Hermes runtime/data directory created by this installer and the `hermes` launcher, run:
 
@@ -250,7 +320,7 @@ $PREFIX/bin/hermes
 
 It does not uninstall the Termux App itself.
 
-## 12. Reset to a clean Termux-only state
+## 13. Reset to a clean Termux-only state
 
 Use this if you want to remove Hermes Agent and this installer checkout, leaving the phone with Termux installed but without this Hermes setup.
 
