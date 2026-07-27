@@ -1,29 +1,153 @@
 {
   "name": "Hermes Agent Android Termux Custom Skills Pack",
-  "version": "1.0.0",
-  "description": "Curated optional custom skills and local design reference libraries for Hermes Agent on Android Termux.",
+  "version": "1.1.0",
+  "description": "Public-safe optional custom skills exported from a proven Android Termux Hermes venv setup. Runtime state, memories, sessions, credentials, and private local references are excluded.",
   "paths": {
     "skills": "custom-skills/",
     "library": "custom-skills-library/awesome-design-md/"
   },
+  "source": {
+    "hermes_version": "0.19.0",
+    "venv_install_path": "~/.hermes-venv/hermes-agent",
+    "export_policy": "portable SKILL.md assets only; private/local references filtered"
+  },
   "counts": {
-    "marketing": 34,
-    "design": 21,
-    "android": 1,
-    "total_skills": 56,
-    "awesome_design_md_files": 74
+    "total_skills": 183,
+    "total_files": 1898,
+    "total_bytes": 65634430,
+    "awesome_design_md_files": 74,
+    "android": 3,
+    "apple": 4,
+    "autonomous-ai-agents": 5,
+    "communication": 1,
+    "creative": 47,
+    "data-science": 3,
+    "devops": 2,
+    "email": 1,
+    "github": 1,
+    "hermes": 2,
+    "hermes-desktop-plugins": 1,
+    "hermes-themes": 1,
+    "marketing": 37,
+    "media": 4,
+    "mlops": 7,
+    "note-taking": 1,
+    "omh": 10,
+    "productivity": 28,
+    "research": 10,
+    "smart-home": 1,
+    "social-media": 1,
+    "software-development": 12,
+    "yuanbao": 1
   },
   "packs": {
     "all": {
+      "android": [
+        "android-adb-system-inspector",
+        "android-termux-apk-build",
+        "termux-android-storage"
+      ],
+      "apple": [
+        "apple-notes",
+        "apple-reminders",
+        "findmy",
+        "imessage"
+      ],
+      "autonomous-ai-agents": [
+        "claude-code",
+        "codex",
+        "computer-use",
+        "hermes-agent",
+        "opencode"
+      ],
+      "communication": [
+        "one-three-one-rule"
+      ],
+      "creative": [
+        "architecture-diagram",
+        "ascii-art",
+        "ascii-video",
+        "banner-design",
+        "baoyu-infographic",
+        "baseline-ui",
+        "brand",
+        "brandkit",
+        "brutalist-skill",
+        "claude-design",
+        "comfyui",
+        "concept-diagrams",
+        "create-design-md",
+        "creative-ideation",
+        "design",
+        "design-md",
+        "design-system",
+        "excalidraw",
+        "fixing-accessibility",
+        "fixing-metadata",
+        "fixing-motion-performance",
+        "gpt-tasteskill",
+        "hallmark",
+        "humanizer",
+        "image-to-code-skill",
+        "imagegen-frontend-mobile",
+        "imagegen-frontend-web",
+        "improve-ui",
+        "manim-video",
+        "meme-generation",
+        "minimalist-skill",
+        "output-skill",
+        "p5js",
+        "popular-web-designs",
+        "pretext",
+        "redesign-skill",
+        "sketch",
+        "slides",
+        "soft-skill",
+        "songwriting-and-ai-music",
+        "stitch-skill",
+        "taste-skill",
+        "taste-skill-v1",
+        "touchdesigner-mcp",
+        "ui-skills-root",
+        "ui-styling",
+        "ui-ux-pro-max"
+      ],
+      "data-science": [
+        "duckdb-local-analytics",
+        "jupyter-live-kernel",
+        "local-sql-analytics"
+      ],
+      "devops": [
+        "pinggy-tunnel",
+        "watchers"
+      ],
+      "email": [
+        "himalaya"
+      ],
+      "github": [
+        "codebase-inspection"
+      ],
+      "hermes": [
+        "hermes-session-management",
+        "official-skills-catalog"
+      ],
+      "hermes-desktop-plugins": [
+        "hermes-desktop-plugins"
+      ],
+      "hermes-themes": [
+        "hermes-themes"
+      ],
       "marketing": [
         "ads",
         "ai-seo",
         "analytics",
+        "android-web-performance-monitoring",
         "competitor-profiling",
         "content-strategy",
         "copy-editing",
         "copywriting",
         "cro",
+        "crux-performance-audit",
         "customer-research",
         "image",
         "launch",
@@ -31,6 +155,7 @@
         "marketing-plan",
         "marketing-psychology",
         "offers",
+        "pagespeed-crux-monitoring",
         "pricing",
         "product-marketing",
         "programmatic-seo",
@@ -40,7 +165,6 @@
         "seo-content",
         "seo-content-brief",
         "seo-geo",
-        "seo-geo-site-audits",
         "seo-google",
         "seo-images",
         "seo-local",
@@ -49,137 +173,246 @@
         "seo-schema",
         "seo-sitemap",
         "seo-technical",
-        "site-architecture"
+        "site-architecture",
+        "termux-web-performance-monitoring"
       ],
-      "creative": [
-        "banner-design",
-        "brand",
-        "design",
-        "design-system",
-        "slides",
-        "ui-styling",
-        "ui-ux-pro-max",
-        "brandkit",
-        "brutalist-skill",
-        "gpt-tasteskill",
-        "image-to-code-skill",
-        "imagegen-frontend-mobile",
-        "imagegen-frontend-web",
-        "minimalist-skill",
-        "output-skill",
-        "redesign-skill",
-        "soft-skill",
-        "stitch-skill",
-        "taste-skill",
-        "taste-skill-v1",
-        "awesome-design-md-library"
+      "media": [
+        "gif-search",
+        "heartmula",
+        "songsee",
+        "youtube-content"
       ],
-      "android": [
-        "android-adb-system-inspector"
-      ]
-    },
-    "marketing": {
-      "marketing": [
-        "ads",
-        "ai-seo",
-        "analytics",
-        "competitor-profiling",
-        "content-strategy",
-        "copy-editing",
-        "copywriting",
-        "cro",
-        "customer-research",
-        "image",
-        "launch",
-        "marketing-ideas",
-        "marketing-plan",
-        "marketing-psychology",
-        "offers",
-        "pricing",
-        "product-marketing",
-        "programmatic-seo",
-        "schema",
-        "seo-audit",
-        "seo-competitor-pages",
-        "seo-content",
-        "seo-content-brief",
-        "seo-geo",
-        "seo-geo-site-audits",
-        "seo-google",
-        "seo-images",
-        "seo-local",
-        "seo-maps",
-        "seo-page",
-        "seo-schema",
-        "seo-sitemap",
-        "seo-technical",
-        "site-architecture"
-      ]
-    },
-    "design": {
-      "creative": [
-        "banner-design",
-        "brand",
-        "design",
-        "design-system",
-        "slides",
-        "ui-styling",
-        "ui-ux-pro-max",
-        "brandkit",
-        "brutalist-skill",
-        "gpt-tasteskill",
-        "image-to-code-skill",
-        "imagegen-frontend-mobile",
-        "imagegen-frontend-web",
-        "minimalist-skill",
-        "output-skill",
-        "redesign-skill",
-        "soft-skill",
-        "stitch-skill",
-        "taste-skill",
-        "taste-skill-v1",
-        "awesome-design-md-library"
-      ]
-    },
-    "android": {
-      "android": [
-        "android-adb-system-inspector"
-      ]
-    },
-    "library": {
-      "library": [
-        "awesome-design-md"
+      "mlops": [
+        "evaluation/evaluating-llms-harness",
+        "evaluation/weights-and-biases",
+        "huggingface-hub",
+        "inference/llama-cpp",
+        "inference/serving-llms-vllm",
+        "models/audiocraft",
+        "models/segment-anything"
+      ],
+      "note-taking": [
+        "obsidian"
+      ],
+      "omh": [
+        "omh-autopilot",
+        "omh-deep-interview",
+        "omh-deep-research",
+        "omh-ralph",
+        "omh-ralph-driver",
+        "omh-ralph-task",
+        "omh-ralplan",
+        "omh-ralplan-driver",
+        "omh-triage",
+        "omh-triage-driver"
+      ],
+      "productivity": [
+        "airtable",
+        "docx",
+        "google-workspace",
+        "here-now",
+        "maps",
+        "morph-ppt",
+        "morph-ppt-3d",
+        "nano-pdf",
+        "notion",
+        "ocr-and-documents",
+        "officecli",
+        "officecli-academic-paper",
+        "officecli-data-dashboard",
+        "officecli-docx",
+        "officecli-financial-model",
+        "officecli-pitch-deck",
+        "officecli-pptx",
+        "officecli-word-form",
+        "officecli-xlsx",
+        "pdf",
+        "petdex",
+        "powerpoint",
+        "siyuan",
+        "teams-meeting-pipeline",
+        "termux-pdf-analysis",
+        "termux-pdf-document-analysis",
+        "tui-widgets",
+        "xlsx"
+      ],
+      "research": [
+        "arxiv",
+        "blogwatcher",
+        "domain-intel",
+        "duckduckgo-search",
+        "llm-wiki",
+        "polymarket",
+        "qmd",
+        "research-paper-writing",
+        "scrapling",
+        "searxng-search"
+      ],
+      "smart-home": [
+        "openhue"
+      ],
+      "social-media": [
+        "xurl"
+      ],
+      "software-development": [
+        "dogfood",
+        "hermes-agent-skill-authoring",
+        "node-inspect-debugger",
+        "plan",
+        "python-debugpy",
+        "requesting-code-review",
+        "rest-graphql-debug",
+        "simplify-code",
+        "spike",
+        "subagent-driven-development",
+        "systematic-debugging",
+        "test-driven-development"
+      ],
+      "yuanbao": [
+        "yuanbao"
       ]
     }
   },
-  "sources": [
-    {
-      "name": "marketingskills",
-      "repo": "https://github.com/coreyhaines31/marketingskills",
-      "staged_count": 48,
-      "active_count": 34
-    },
-    {
-      "name": "claude-seo",
-      "repo": "https://github.com/AgriciDaniel/claude-seo",
-      "staged_count": 25,
-      "active_count": "subset integrated through marketing/seo skills"
-    },
-    {
-      "name": "ui-ux-pro-max-skill",
-      "repo": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
-      "active_count": 7
-    },
-    {
-      "name": "taste-skill",
-      "repo": "https://github.com/Leonxlnx/taste-skill",
-      "active_count": 13
-    },
-    {
-      "name": "awesome-design-md",
-      "repo": "https://github.com/VoltAgent/awesome-design-md",
-      "design_md_count": 74,
-      "active_skill": "awesome-design-md-library"
-    }
+  "skipped": {
+    "skills": [
+      [
+        "android/android-termux-hermes-setup",
+        "explicit/internal"
+      ],
+      [
+        "autonomous-ai-agents/advisor-orchestrator-worker",
+        "SKILL.md private/secret pattern"
+      ],
+      [
+        "creative/awesome-design-md-library",
+        "SKILL.md private/secret pattern"
+      ],
+      [
+        "github/github-auth",
+        "SKILL.md private/secret pattern"
+      ],
+      [
+        "github/github-code-review",
+        "SKILL.md private/secret pattern"
+      ],
+      [
+        "github/github-issues",
+        "SKILL.md private/secret pattern"
+      ],
+      [
+        "github/github-pr-workflow",
+        "SKILL.md private/secret pattern"
+      ],
+      [
+        "github/github-repo-management",
+        "SKILL.md private/secret pattern"
+      ],
+      [
+        "github/public-repo-release-hygiene",
+        "explicit/internal"
+      ],
+      [
+        "marketing/aggressive-growth-planning",
+        "SKILL.md private/secret pattern"
+      ],
+      [
+        "marketing/cwv-performance-monitoring",
+        "SKILL.md private/secret pattern"
+      ],
+      [
+        "marketing/integrated-seo-paid-growth-planning",
+        "SKILL.md private/secret pattern"
+      ],
+      [
+        "marketing/pagespeed-monitoring",
+        "SKILL.md private/secret pattern"
+      ],
+      [
+        "marketing/seo-geo-site-audits",
+        "SKILL.md private/secret pattern"
+      ],
+      [
+        "marketing/termux-seo-performance-monitoring",
+        "SKILL.md private/secret pattern"
+      ],
+      [
+        "marketing/web-performance-crux-pagespeed-analysis",
+        "SKILL.md private/secret pattern"
+      ],
+      [
+        "productivity/thinking-out-loud",
+        "SKILL.md private/secret pattern"
+      ],
+      [
+        "software-development/code-wiki",
+        "SKILL.md private/secret pattern"
+      ],
+      [
+        "software-development/commit-archaeologist",
+        "SKILL.md private/secret pattern"
+      ],
+      [
+        "software-development/external-agent-skill-libraries",
+        "SKILL.md private/secret pattern"
+      ],
+      [
+        "software-development/external-agent-skill-library-staging",
+        "SKILL.md private/secret pattern"
+      ],
+      [
+        "software-development/external-skill-library-import",
+        "SKILL.md private/secret pattern"
+      ],
+      [
+        "software-development/project-graveyard",
+        "SKILL.md private/secret pattern"
+      ],
+      [
+        "software-development/scope-creep-detector",
+        "SKILL.md private/secret pattern"
+      ],
+      [
+        "workflow/obsidian-brain-global-memory",
+        "explicit/internal"
+      ],
+      [
+        "workflow/obsidian-pdf-report-workflow",
+        "explicit/internal"
+      ],
+      [
+        "workflow/obsidian-project-brain-sync",
+        "explicit/internal"
+      ]
+    ],
+    "files": [
+      [
+        "android/android-termux-apk-build",
+        "references/cleanit-termux-manual-apk.md",
+        "private/secret pattern"
+      ],
+      [
+        "creative/meme-generation",
+        "scripts/.gitignore",
+        "hidden/cache"
+      ],
+      [
+        "creative/ui-styling",
+        "scripts/.coverage",
+        "hidden/cache"
+      ],
+      [
+        "marketing/marketing-plan",
+        "references/upstream-references/example-quietude.md",
+        "private/secret pattern"
+      ],
+      [
+        "mlops/evaluation/evaluating-llms-harness",
+        "references/api-evaluation.md",
+        "private/secret pattern"
+      ]
+    ]
+  },
+  "notes": [
+    "Nested upstream reference SKILL.md files under references/ are renamed to original-SKILL.md so they are not installed as active skills."
   ]
 }

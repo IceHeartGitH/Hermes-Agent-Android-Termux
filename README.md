@@ -141,7 +141,7 @@ This command only clones or updates this public installer repository. It does no
 
 ## 6. Optional custom skills and DESIGN.md library
 
-This repository also includes an optional custom skills pack. It is not installed by default.
+This repository also includes an optional public-safe custom skills pack. It is not installed by default.
 
 The files are downloaded together with this repository, so after running the install command above they are already available locally in the checkout:
 
@@ -150,64 +150,77 @@ custom-skills/
 custom-skills-library/
 ```
 
-What is included:
+Current bundled pack:
 
 ```text
-custom-skills/marketing/   34 marketing, SEO, GEO, CRO, copywriting, analytics, schema, content, and launch skills
-custom-skills/creative/    21 UI/UX, design-system, brand, taste, redesign, image-to-code, and DESIGN.md workflow skills
-custom-skills/android/      1 Android ADB system-inspection helper skill
+total custom skills: 183
+total skill files:   1898
+DESIGN.md entries:   74
 ```
 
-Total optional custom skills:
+Bundled categories:
 
 ```text
-56 skills
+custom-skills/android/   3 skills
+custom-skills/apple/   4 skills
+custom-skills/autonomous-ai-agents/   5 skills
+custom-skills/communication/   1 skills
+custom-skills/creative/   47 skills
+custom-skills/data-science/   3 skills
+custom-skills/devops/   2 skills
+custom-skills/email/   1 skills
+custom-skills/github/   1 skills
+custom-skills/hermes/   2 skills
+custom-skills/hermes-desktop-plugins/   1 skills
+custom-skills/hermes-themes/   1 skills
+custom-skills/marketing/   37 skills
+custom-skills/media/   4 skills
+custom-skills/mlops/   7 skills
+custom-skills/note-taking/   1 skills
+custom-skills/omh/   10 skills
+custom-skills/productivity/   28 skills
+custom-skills/research/   10 skills
+custom-skills/smart-home/   1 skills
+custom-skills/social-media/   1 skills
+custom-skills/software-development/   12 skills
+custom-skills/yuanbao/   1 skills
 ```
 
-The reference library is separate:
+The pack is exported from a proven Android Termux Hermes venv setup, but it is sanitized for public use. It excludes credentials, sessions, memory/profile files, cron outputs, private local paths, Obsidian/private workflow references, and runtime databases.
 
-```text
-custom-skills-library/awesome-design-md/   74 brand/style DESIGN.md reference files
+To preview available categories:
+
+```sh
+bash scripts/install-custom-skills.sh --list
 ```
 
-Install everything:
+To install all bundled custom skills after Hermes is installed:
 
 ```sh
 bash scripts/install-custom-skills.sh --all
 ```
 
-Install by group:
+To install only one category:
+
+```sh
+bash scripts/install-custom-skills.sh --category omh
+bash scripts/install-custom-skills.sh --category productivity
+bash scripts/install-custom-skills.sh --category research
+```
+
+Convenience aliases are also available:
 
 ```sh
 bash scripts/install-custom-skills.sh --marketing
 bash scripts/install-custom-skills.sh --design
 bash scripts/install-custom-skills.sh --android
-bash scripts/install-custom-skills.sh --library
 ```
 
-Preview without changing files:
-
-```sh
-bash scripts/install-custom-skills.sh --all --dry-run
-```
-
-Verify the bundled pack:
+To verify the bundled pack without installing it:
 
 ```sh
 bash scripts/verify-custom-skills.sh
 ```
-
-After installing custom skills, start a fresh Hermes session if the current session does not immediately see them.
-
-### Prompt for the installed Hermes Agent
-
-You can also ask the newly installed Hermes Agent to inspect and install the custom pack for you. Start Hermes from this repository folder and paste this prompt:
-
-```text
-You are running inside the Hermes-Agent-Android-Termux repository on Android Termux. Inspect the local folders `custom-skills/` and `custom-skills-library/`. Explain what skills and libraries are available, count them by group, then offer to install all custom skills, only marketing skills, only design skills, only Android helper skills, or only the DESIGN.md library. If I choose an option, use `bash scripts/install-custom-skills.sh <option>` and verify with `bash scripts/verify-custom-skills.sh --installed`. Do not copy auth files, sessions, memories, cron jobs, or private device state.
-```
-
-The custom skills are optional. The normal Hermes Agent installation works without them.
 
 ## 7. Verify the installation
 

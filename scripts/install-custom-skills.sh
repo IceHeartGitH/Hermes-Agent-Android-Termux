@@ -4,40 +4,51 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)"
 SKILL_SRC="$ROOT/custom-skills"
 LIB_SRC="$ROOT/custom-skills-library/awesome-design-md"
+MANIFEST="$SKILL_SRC/manifest.json"
 HERMES_HOME_DIR="${HERMES_HOME:-$HOME/.hermes-venv}"
 SKILL_DST="$HERMES_HOME_DIR/skills"
 LIB_DST="$HERMES_HOME_DIR/skill-libraries/awesome-design-md"
 BACKUP_ROOT="$HERMES_HOME_DIR/backups/custom-skills-$(date +%Y%m%d-%H%M%S)"
 DRY_RUN=0
 MODE=""
+CATEGORY=""
 
 usage() {
   cat <<'EOF'
 Usage: bash scripts/install-custom-skills.sh [MODE] [--dry-run]
 
 Modes:
-  --all        Install all custom skills and the DESIGN.md library
-  --marketing  Install marketing/SEO custom skills only
-  --design     Install design/UI/UX custom skills and the DESIGN.md library
-  --android    Install Android helper custom skills only
-  --library    Install only the custom skills reference library
+  --all             Install all public-safe bundled custom skills and DESIGN.md library
+  --marketing       Install marketing skills only
+  --design          Install creative/design skills and DESIGN.md library
+  --android         Install Android helper skills only
+  --library         Install only the DESIGN.md reference library
+  --category NAME   Install one category from custom-skills/ (e.g. research, productivity, omh)
+  --list            List bundled categories and counts
 
 Examples:
   bash scripts/install-custom-skills.sh --all
+  bash scripts/install-custom-skills.sh --category omh
+  bash scripts/install-custom-skills.sh --category productivity
   bash scripts/install-custom-skills.sh --design
-  bash scripts/install-custom-skills.sh --marketing
-  bash scripts/install-custom-skills.sh --library
   bash scripts/install-custom-skills.sh --all --dry-run
 EOF
 }
 
-for arg in "$@"; do
-  case "$arg" in
-    --all|--marketing|--design|--android|--library) MODE="$arg" ;;
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+    --all|--marketing|--design|--android|--library|--list) MODE="$1" ;;
+    --category)
+      MODE="--category"
+      shift
+      CATEGORY="${1:-}"
+      [ -n "$CATEGORY" ] || { echo "Missing category name" >&2; exit 2; }
+      ;;
     --dry-run) DRY_RUN=1 ;;
     -h|--help) usage; exit 0 ;;
-    *) echo "Unknown argument: $arg" >&2; usage; exit 2 ;;
+    *) echo "Unknown argument: $1" >&2; usage; exit 2 ;;
   esac
+  shift
 done
 
 if [ -z "$MODE" ]; then
@@ -46,10 +57,8 @@ if [ -z "$MODE" ]; then
   exit 2
 fi
 
-if [ ! -d "$SKILL_SRC" ]; then
-  echo "Missing custom skills folder: $SKILL_SRC" >&2
-  exit 1
-fi
+[ -d "$SKILL_SRC" ] || { echo "Missing custom skills folder: $SKILL_SRC" >&2; exit 1; }
+[ -f "$MANIFEST" ] || { echo "Missing manifest: $MANIFEST" >&2; exit 1; }
 
 run() {
   if [ "$DRY_RUN" -eq 1 ]; then
@@ -61,28 +70,55 @@ run() {
   fi
 }
 
+list_categories() {
+  python - "$MANIFEST" <<'PY'
+from pathlib import Path
+import json, sys
+m=json.loads(Path(sys.argv[1]).read_text())
+print('Bundled custom skills:')
+for k,v in sorted(m.get('counts',{}).items()):
+    if k.startswith('total_') or k == 'awesome_design_md_files':
+        continue
+    print(f'  {k}: {v}')
+print(f"Total skills: {m['counts']['total_skills']}")
+print(f"Total files:  {m['counts']['total_files']}")
+print(f"DESIGN.md library entries: {m['counts']['awesome_design_md_files']}")
+PY
+}
+
 copy_skill_dir() {
-  local cat="$1"
-  local name="$2"
-  local src="$SKILL_SRC/$cat/$name"
-  local dst="$SKILL_DST/$cat/$name"
+  local rel="$1"
+  local src="$SKILL_SRC/$rel"
+  local dst="$SKILL_DST/$rel"
   [ -f "$src/SKILL.md" ] || { echo "Missing SKILL.md: $src" >&2; exit 1; }
   if [ -e "$dst" ]; then
-    run mkdir -p "$BACKUP_ROOT/$cat"
-    run rm -rf "$BACKUP_ROOT/$cat/$name"
-    run mv "$dst" "$BACKUP_ROOT/$cat/$name"
+    run mkdir -p "$BACKUP_ROOT/$(dirname "$rel")"
+    run rm -rf "$BACKUP_ROOT/$rel"
+    run mv "$dst" "$BACKUP_ROOT/$rel"
   fi
-  run mkdir -p "$SKILL_DST/$cat"
+  run mkdir -p "$(dirname "$dst")"
   run cp -a "$src" "$dst"
-  echo "installed skill: $cat/$name"
+  echo "installed skill: $rel"
 }
 
 copy_category() {
   local cat="$1"
-  [ -d "$SKILL_SRC/$cat" ] || return 0
-  while IFS= read -r -d '' skill_dir; do
-    copy_skill_dir "$cat" "$(basename "$skill_dir")"
-  done < <(find "$SKILL_SRC/$cat" -mindepth 1 -maxdepth 1 -type d -print0 | sort -z)
+  [ -d "$SKILL_SRC/$cat" ] || { echo "Unknown or empty category: $cat" >&2; exit 1; }
+  while IFS= read -r -d '' skill_md; do
+    local rel
+    rel="${skill_md#$SKILL_SRC/}"
+    rel="${rel%/SKILL.md}"
+    copy_skill_dir "$rel"
+  done < <(find "$SKILL_SRC/$cat" -name SKILL.md -type f -print0 | sort -z)
+}
+
+install_all_categories() {
+  while IFS= read -r -d '' catdir; do
+    local cat
+    cat="$(basename "$catdir")"
+    [ "$cat" = "manifest.json" ] && continue
+    copy_category "$cat"
+  done < <(find "$SKILL_SRC" -mindepth 1 -maxdepth 1 -type d -print0 | sort -z)
 }
 
 install_library() {
@@ -98,10 +134,12 @@ install_library() {
 }
 
 case "$MODE" in
+  --list)
+    list_categories
+    exit 0
+    ;;
   --all)
-    copy_category marketing
-    copy_category creative
-    copy_category android
+    install_all_categories
     install_library
     ;;
   --marketing)
@@ -114,6 +152,9 @@ case "$MODE" in
   --android)
     copy_category android
     ;;
+  --category)
+    copy_category "$CATEGORY"
+    ;;
   --library)
     install_library
     ;;
@@ -121,8 +162,8 @@ esac
 
 if [ "$DRY_RUN" -eq 0 ]; then
   echo
-  echo "Verifying custom skills..."
-  bash "$ROOT/scripts/verify-custom-skills.sh" --installed || true
+  echo "Verifying custom skills pack..."
+  bash "$ROOT/scripts/verify-custom-skills.sh" || true
   echo
   echo "Done. Start a fresh Hermes session if a running session does not auto-load the new skills."
   if [ -d "$BACKUP_ROOT" ]; then
