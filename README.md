@@ -188,39 +188,47 @@ custom-skills/yuanbao/   1 skills
 
 The pack is exported from a proven Android Termux Hermes venv setup, but it is sanitized for public use. It excludes credentials, sessions, memory/profile files, cron outputs, private local paths, Obsidian/private workflow references, and runtime databases.
 
+Run the custom-skills commands from this repository checkout, not from your home directory or another project folder:
+
+```sh
+cd ~/Hermes-Agent-Android-Termux
+```
+
 To preview available categories:
 
 ```sh
-bash scripts/install-custom-skills.sh --list
+cd ~/Hermes-Agent-Android-Termux && bash scripts/install-custom-skills.sh --list
 ```
 
 To install all bundled custom skills after Hermes is installed:
 
 ```sh
-bash scripts/install-custom-skills.sh --all
+cd ~/Hermes-Agent-Android-Termux && bash scripts/install-custom-skills.sh --all
 ```
 
 To install only one category:
 
 ```sh
-bash scripts/install-custom-skills.sh --category omh
-bash scripts/install-custom-skills.sh --category productivity
-bash scripts/install-custom-skills.sh --category research
+cd ~/Hermes-Agent-Android-Termux && bash scripts/install-custom-skills.sh --category omh
+cd ~/Hermes-Agent-Android-Termux && bash scripts/install-custom-skills.sh --category productivity
+cd ~/Hermes-Agent-Android-Termux && bash scripts/install-custom-skills.sh --category research
 ```
 
 Convenience aliases are also available:
 
 ```sh
-bash scripts/install-custom-skills.sh --marketing
-bash scripts/install-custom-skills.sh --design
-bash scripts/install-custom-skills.sh --android
+cd ~/Hermes-Agent-Android-Termux && bash scripts/install-custom-skills.sh --marketing
+cd ~/Hermes-Agent-Android-Termux && bash scripts/install-custom-skills.sh --design
+cd ~/Hermes-Agent-Android-Termux && bash scripts/install-custom-skills.sh --android
 ```
 
 To verify the bundled pack without installing it:
 
 ```sh
-bash scripts/verify-custom-skills.sh
+cd ~/Hermes-Agent-Android-Termux && bash scripts/verify-custom-skills.sh
 ```
+
+The skills are installed into the Hermes profile directory used by the `hermes` command. They are not installed into your current shell folder.
 
 ## 7. Verify the installation
 
@@ -251,11 +259,23 @@ Follow the interactive prompts.
 
 ## 9. Start Hermes
 
-Start the interactive CLI:
+The `hermes` command can be started from any folder. The folder you start it from becomes the working folder for that session.
+
+For general chat or normal assistant use without a specific project context, start Hermes from your home directory:
 
 ```sh
+cd ~
 hermes
 ```
+
+For project-specific work, start Hermes from the project folder you want it to understand:
+
+```sh
+cd ~/Hermes-Agent-Android-Termux
+hermes
+```
+
+When started from a project folder, Hermes can use that folder's files, Git repository, and project instructions as context. When started from `~`, Hermes still has access to its installed skills, memory, tools, sessions, and provider configuration, but it is not attached to a specific project folder.
 
 Useful commands after setup:
 

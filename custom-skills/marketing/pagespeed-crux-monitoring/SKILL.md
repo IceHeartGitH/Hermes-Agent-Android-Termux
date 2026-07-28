@@ -41,7 +41,7 @@ When checking the file, print only:
 - file exists;
 - byte count;
 - line count;
-- whether `PAGESPEED_API_KEY=` exists;
+- whether the PageSpeed API key line exists;
 - key length.
 
 Never print the key value. If the user accidentally creates files whose names contain `PAGESPEED_API_KEY`, delete only files matching `*PAGESPEED_API_KEY*` and do not echo their full names because the filename may contain the secret.

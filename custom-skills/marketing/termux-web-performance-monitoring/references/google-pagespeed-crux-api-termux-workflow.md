@@ -29,7 +29,7 @@ Verify without printing the key:
 f="$HOME/.config/example-project/.env"
 test -f "$f" && echo exists=yes
 wc -c < "$f"
-grep -q '^PAGESPEED_API_KEY=' "$f" && echo key_line=yes || echo key_line=no
+grep -q '^PAGESPEED_API_KEY' "$f" && echo key_line=yes || echo key_line=no
 ```
 
 Pitfall: if the user accidentally creates files whose filename contains `PAGESPEED_API_KEY`, delete only those mistaken files and keep the correct `.env`:
