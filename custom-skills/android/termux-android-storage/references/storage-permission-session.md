@@ -1,57 +1,45 @@
-# Android/Termux storage permission session notes
+# Android/Termux storage permission notes
 
-Context: Hermes Agent running inside Termux on Android 14, home at `/data/data/com.termux/files/home`.
+This reference is intentionally generic. It describes typical Termux storage behavior without recording a specific user's device, home path, vault names, or directory listing.
 
-## Useful observed checks
+## Useful checks
 
 Initial environment checks:
 
 ```sh
-pwd && whoami && uname -a && printf '\nHOME=%s\n' "$HOME"
+pwd && whoami && uname -a && printf '
+HOME=%s
+' "$HOME"
 ```
 
-Safe tree inspection should use directory-only traversal, a shallow max depth, and inline permission markers. In this session, `/sdcard`, `/storage/emulated/0`, and `/storage/self/primary` all resolved to the same shared storage root.
+Safe tree inspection should use directory-only traversal, a shallow max depth, and inline permission markers. Do not read file contents from user storage unless explicitly requested.
 
 ## termux-setup-storage behavior
 
-Before setup, `$HOME/storage` was missing, while direct `/sdcard` access still worked. Running:
+Run:
 
 ```sh
 termux-setup-storage
 ```
 
-created the Termux storage directory and symlinks. After the user granted permission, verified links included:
+After Android permission is granted, Termux typically creates `$HOME/storage` symlinks such as:
 
 ```text
-~/storage/shared     -> /storage/emulated/0
-~/storage/downloads  -> /storage/emulated/0/Download
-~/storage/documents  -> /storage/emulated/0/Documents
-~/storage/dcim       -> /storage/emulated/0/DCIM
-~/storage/pictures   -> /storage/emulated/0/Pictures
-~/storage/music      -> /storage/emulated/0/Music
-~/storage/movies     -> /storage/emulated/0/Movies
+~/storage/shared
+~/storage/downloads
+~/storage/documents
+~/storage/dcim
+~/storage/pictures
+~/storage/music
+~/storage/movies
 ```
 
-Device-specific app storage links may also appear, e.g.:
-
-```text
-~/storage/external-0 -> /storage/emulated/0/Android/data/com.termux/files
-~/storage/media-0    -> /storage/emulated/0/Android/media/com.termux
-~/storage/external-1 -> /storage/<sdcard-id>/Android/data/com.termux/files
-~/storage/media-1    -> /storage/<sdcard-id>/Android/media/com.termux
-```
+Some devices may also expose app-scoped storage links for external or media storage. Treat these as device-dependent and verify them on the target phone.
 
 ## Expected Android restrictions
 
-Even after permission was granted, these remained blocked:
-
-```text
-/sdcard/Android/data
-/sdcard/Android/obb
-```
-
-Phrase this as an Android restriction, not as a Hermes or Termux bug.
+Modern Android commonly restricts other apps' private data and OBB folders even after shared-storage permission is granted. Phrase this as an Android storage policy, not as a Hermes or Termux bug.
 
 ## Privacy note
 
-When listing phone storage, directory names may reveal sensitive areas such as vaults, password-manager folders, backups, recordings, and photos. Do not read file contents from those areas unless the user explicitly asks.
+Directory names in phone storage may reveal sensitive areas such as vaults, password-manager folders, backups, recordings, and photos. Report only what is necessary and avoid printing private filenames unless the user explicitly asks.

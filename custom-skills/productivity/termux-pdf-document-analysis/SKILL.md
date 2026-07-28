@@ -38,7 +38,7 @@ The user expects practical installs to be verified in both:
 2. global/system Python used by `hermes-global` / Termux shell:
 
 ```text
-/data/data/com.termux/files/usr/bin/python
+$(command -v python)
 ```
 
 If there is also a separate `~/.hermes/hermes-agent/venv/bin/python`, check it too, but do not assume it is the runtime for `hermes-global`; inspect the launcher if needed.
@@ -89,7 +89,7 @@ export PATH="$HOME/.local/bin:$PATH"
 If Bulgarian OCR is needed and `tesseract --list-langs` does not show `bul`, install:
 
 ```bash
-TESSDIR="/data/data/com.termux/files/usr/share/tessdata"
+TESSDIR="${PREFIX:?PREFIX is not set}/share/tessdata"
 mkdir -p "$TESSDIR"
 curl -L --fail -o "$TESSDIR/bul.traineddata" \
   https://github.com/tesseract-ocr/tessdata_fast/raw/main/bul.traineddata

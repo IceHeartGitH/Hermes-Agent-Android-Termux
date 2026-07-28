@@ -112,7 +112,9 @@ install_pinned_termux_python313() {
 
   check_pinned_python_runtime_compatible
   echo "Installing pinned Termux Python $pinned_python_version from working snapshot ($arch)..."
-  tmpdir="$(mktemp -d /data/data/com.termux/files/usr/tmp/hermes-python313-XXXXXX)"
+  tmp_base="${TMPDIR:-${PREFIX:?PREFIX is not set}/tmp}"
+  mkdir -p "$tmp_base"
+  tmpdir="$(mktemp -d "$tmp_base/hermes-python313-XXXXXX")"
   python_deb="$tmpdir/python_${pinned_python_version}_${arch}.deb"
   wheels_deb="$tmpdir/python-ensurepip-wheels_${pinned_python_version}_all.deb"
   pip_deb="$tmpdir/python-pip_${pinned_pip_version}_all.deb"
@@ -192,7 +194,7 @@ PY
     ln -sfr "$pip_bin" "$shim_dir/pip3"
   else
     cat > "$shim_dir/pip" <<SH
-#!/data/data/com.termux/files/usr/bin/sh
+#!/bin/sh
 exec "$py_abs" -m pip "\$@"
 SH
     cp "$shim_dir/pip" "$shim_dir/pip3"

@@ -16,7 +16,7 @@ if [ ! -f "$APK" ]; then
   exit 1
 fi
 
-TMPDIR="${TMPDIR:-/data/data/com.termux/files/usr/tmp}"
+TMPDIR="${TMPDIR:-${PREFIX:?PREFIX is not set}/tmp}"
 SIGN_LOG="$TMPDIR/hermes-apk-sign-$$.log"
 MANIFEST_LOG="$TMPDIR/hermes-apk-manifest-$$.log"
 BADGING_LOG="$TMPDIR/hermes-apk-badging-$$.log"

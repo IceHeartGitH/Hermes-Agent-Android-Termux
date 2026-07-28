@@ -20,7 +20,7 @@ mkdir -p ~/.config/example-project
 chmod 700 ~/.config/example-project
 touch ~/.config/example-project/.env
 chmod 600 ~/.config/example-project/.env
-printf '%s\n' 'PAGESPEED_API_KEY=YOUR_REAL_KEY' > ~/.config/example-project/.env
+printf '%s\n' 'PAGESPEED_API_KEY=<YOUR_API_KEY>' > ~/.config/example-project/.env
 ```
 
 Verify without printing the key:

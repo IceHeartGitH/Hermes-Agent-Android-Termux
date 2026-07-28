@@ -5,8 +5,9 @@ This folder contains a public-safe optional Hermes Agent custom skills pack for 
 Counts:
 
 ```text
-total skills: 194
-total files:  1900
+total skills: 183
+total files:  1898
+DESIGN.md entries: 74
 ```
 
 The pack is sanitized for public distribution. It excludes credentials, sessions, state databases, memories/user profiles, cron outputs, private local paths, and personal workflow references.

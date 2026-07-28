@@ -78,7 +78,7 @@ chmod 700 ~/.config/example-project
 touch ~/.config/example-project/.env
 chmod 600 ~/.config/example-project/.env
 # User edits locally; never ask them to paste the key in chat:
-# PAGESPEED_API_KEY=...
+# PAGESPEED_API_KEY=<YOUR_API_KEY>
 ```
 
 Never write the API key into Obsidian, GitHub, reports, command output, screenshots, raw JSON, or memory. If a key-like value appears in any saved artifact, replace it with `[REDACTED]`.

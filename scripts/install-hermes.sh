@@ -75,7 +75,9 @@ echo "Forced PYTHON_PATH: $PYTHON_PATH"
 echo "Forced PYTHON_VERSION: $PYTHON_VERSION"
 mkdir -p "$HERMES_HOME"
 
-backup_dir="$(mktemp -d /data/data/com.termux/files/usr/tmp/hermes-entrypoints-XXXXXX)"
+tmp_base="${TMPDIR:-${PREFIX:?PREFIX is not set}/tmp}"
+mkdir -p "$tmp_base"
+backup_dir="$(mktemp -d "$tmp_base/hermes-entrypoints-XXXXXX")"
 for name in hermes hermes-agent; do
   if [ -e "$PREFIX/bin/$name" ] || [ -L "$PREFIX/bin/$name" ]; then
     cp -a "$PREFIX/bin/$name" "$backup_dir/$name"
@@ -95,7 +97,7 @@ restore_previous_entrypoints() {
 }
 
 log "Downloading official Hermes installer"
-installer_tmp="$(mktemp /data/data/com.termux/files/usr/tmp/hermes-official-install-XXXXXX.sh)"
+installer_tmp="$(mktemp "$tmp_base/hermes-official-install-XXXXXX.sh")"
 curl -fsSL "$installer_url" -o "$installer_tmp"
 
 "$HERMES_PYTHON" - "$installer_tmp" <<'PY'
