@@ -12,9 +12,9 @@
     "export_policy": "portable SKILL.md assets only; private/local references filtered"
   },
   "counts": {
-    "total_skills": 183,
-    "total_files": 1898,
-    "total_bytes": 65633911,
+    "total_skills": 187,
+    "total_files": 1916,
+    "total_bytes": 65735440,
     "awesome_design_md_files": 74,
     "android": 3,
     "apple": 4,
@@ -28,7 +28,7 @@
     "hermes": 2,
     "hermes-desktop-plugins": 1,
     "hermes-themes": 1,
-    "marketing": 37,
+    "marketing": 41,
     "media": 4,
     "mlops": 7,
     "note-taking": 1,
@@ -132,10 +132,10 @@
         "official-skills-catalog"
       ],
       "hermes-desktop-plugins": [
-        "hermes-desktop-plugins"
+        "."
       ],
       "hermes-themes": [
-        "hermes-themes"
+        "."
       ],
       "marketing": [
         "ads",
@@ -155,6 +155,10 @@
         "marketing-plan",
         "marketing-psychology",
         "offers",
+        "openseo-deslop",
+        "openseo-review-web-content",
+        "openseo-seo-coach",
+        "openseo-seo-project-setup",
         "pagespeed-crux-monitoring",
         "pricing",
         "product-marketing",
@@ -269,7 +273,7 @@
         "test-driven-development"
       ],
       "yuanbao": [
-        "yuanbao"
+        "."
       ]
     }
   },
@@ -413,6 +417,7 @@
     ]
   },
   "notes": [
-    "Nested upstream reference SKILL.md files under references/ are renamed to original-SKILL.md so they are not installed as active skills."
+    "Nested upstream reference SKILL.md files under references/ are renamed to original-SKILL.md so they are not installed as active skills.",
+    "Includes four OpenSEO-derived no-API workflow skills adapted for Hermes fallback use without DataForSEO/MCP: openseo-seo-project-setup, openseo-seo-coach, openseo-review-web-content, openseo-deslop."
   ]
 }

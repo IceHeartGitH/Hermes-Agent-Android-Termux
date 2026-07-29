@@ -143,6 +143,8 @@ This command only clones or updates this public installer repository. It does no
 
 This repository also includes an optional public-safe custom skills pack. It is not installed by default.
 
+The pack includes four OpenSEO-derived no-API workflow skills adapted for Hermes fallback use without DataForSEO/MCP: `openseo-seo-project-setup`, `openseo-seo-coach`, `openseo-review-web-content`, and `openseo-deslop`.
+
 The files are downloaded together with this repository, so after running the install command above they are already available locally in the checkout:
 
 ```text
@@ -153,8 +155,8 @@ custom-skills-library/
 Current bundled pack:
 
 ```text
-total custom skills: 183
-total skill files:   1898
+total custom skills: 187
+total skill files:   1916
 DESIGN.md entries:   74
 ```
 
@@ -173,7 +175,7 @@ custom-skills/github/   1 skills
 custom-skills/hermes/   2 skills
 custom-skills/hermes-desktop-plugins/   1 skills
 custom-skills/hermes-themes/   1 skills
-custom-skills/marketing/   37 skills
+custom-skills/marketing/   41 skills
 custom-skills/media/   4 skills
 custom-skills/mlops/   7 skills
 custom-skills/note-taking/   1 skills
