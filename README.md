@@ -135,15 +135,26 @@ What this command does:
 3. runs `install.sh` from the local checkout;
 4. prepares a Hermes-compatible Termux environment;
 5. downloads and runs the official Hermes Agent installer;
-6. creates the `hermes` command.
+6. applies Android/Termux compatibility guards for the venv install path;
+7. creates the `hermes` command.
 
 This command only clones or updates this public installer repository. It does not include credentials, sessions, logs, or device-specific files.
+
+Latest checked upstream compatibility:
+
+```text
+Official Hermes Agent installer: checked 2026-07-30
+Official upstream main: acfd376d6683
+Public installer model: venv-only user command (`hermes`)
+Termux fast `--version` PROJECT_ROOT repair: included
+```
+
 
 ## 6. Optional custom skills and DESIGN.md library
 
 This repository also includes an optional public-safe custom skills pack. It is not installed by default.
 
-The pack includes four OpenSEO-derived no-API workflow skills adapted for Hermes fallback use without DataForSEO/MCP: `openseo-seo-project-setup`, `openseo-seo-coach`, `openseo-review-web-content`, and `openseo-deslop`.
+The pack includes four OpenSEO-derived no-API workflow skills and two lightweight HKUDS/nanobot-derived Termux helper skills: `nanobot-tmux` and `nanobot-weather`.
 
 The files are downloaded together with this repository, so after running the install command above they are already available locally in the checkout:
 
@@ -155,8 +166,8 @@ custom-skills-library/
 Current bundled pack:
 
 ```text
-total custom skills: 187
-total skill files:   1916
+total custom skills: 189
+total skill files:   1920
 DESIGN.md entries:   74
 ```
 
@@ -180,7 +191,7 @@ custom-skills/media/   4 skills
 custom-skills/mlops/   7 skills
 custom-skills/note-taking/   1 skills
 custom-skills/omh/   10 skills
-custom-skills/productivity/   28 skills
+custom-skills/productivity/   30 skills
 custom-skills/research/   10 skills
 custom-skills/smart-home/   1 skills
 custom-skills/social-media/   1 skills

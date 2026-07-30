@@ -1,6 +1,6 @@
 {
   "name": "Hermes Agent Android Termux Custom Skills Pack",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Public-safe optional custom skills exported from a proven Android Termux Hermes venv setup. Runtime state, memories, sessions, credentials, and private local references are excluded.",
   "paths": {
     "skills": "custom-skills/",
@@ -9,12 +9,14 @@
   "source": {
     "hermes_version": "0.19.0",
     "venv_install_path": "~/.hermes-venv/hermes-agent",
-    "export_policy": "portable SKILL.md assets only; private/local references filtered"
+    "export_policy": "portable SKILL.md assets only; private/local references filtered",
+    "verified_upstream_main": "acfd376d6683",
+    "verified_date": "2026-07-30"
   },
   "counts": {
-    "total_skills": 187,
-    "total_files": 1916,
-    "total_bytes": 65735440,
+    "total_skills": 189,
+    "total_files": 1920,
+    "total_bytes": 65745439,
     "awesome_design_md_files": 74,
     "android": 3,
     "apple": 4,
@@ -33,7 +35,7 @@
     "mlops": 7,
     "note-taking": 1,
     "omh": 10,
-    "productivity": 28,
+    "productivity": 30,
     "research": 10,
     "smart-home": 1,
     "social-media": 1,
@@ -219,6 +221,8 @@
         "morph-ppt",
         "morph-ppt-3d",
         "nano-pdf",
+        "nanobot-tmux",
+        "nanobot-weather",
         "notion",
         "ocr-and-documents",
         "officecli",
