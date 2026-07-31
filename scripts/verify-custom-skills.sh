@@ -4,7 +4,9 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)"
 PACK="$ROOT/custom-skills"
 MANIFEST="$PACK/manifest.json"
-LIB="$ROOT/custom-skills-library/awesome-design-md"
+LIB_ROOT="$ROOT/custom-skills-library"
+DESIGN_LIB="$LIB_ROOT/awesome-design-md"
+CRITERIA_LIB="$LIB_ROOT/google-seo-geo-criteria-bank"
 INSTALLED=0
 if [ "${1:-}" = "--installed" ]; then INSTALLED=1; fi
 HERMES_HOME_DIR="${HERMES_HOME:-$HOME/.hermes-venv}"
@@ -35,7 +37,15 @@ count_pack_files() {
 }
 
 count_design_md() {
-  find "$LIB" -name DESIGN.md -type f 2>/dev/null | wc -l | tr -d ' '
+  find "$DESIGN_LIB" -name DESIGN.md -type f 2>/dev/null | wc -l | tr -d ' '
+}
+
+count_criteria_md() {
+  find "$CRITERIA_LIB" -name '*.md' -type f 2>/dev/null | grep -Ev '/(README|Съдържание|SEO Completion Map|GEO Completion Map|00_Credibility_Standards_and_Note_Template)\.md$' | wc -l | tr -d ' '
+}
+
+count_criteria_library_files() {
+  find "$CRITERIA_LIB" -type f 2>/dev/null | wc -l | tr -d ' '
 }
 
 validate_frontmatter() {
@@ -91,15 +101,21 @@ path_scan() {
 expected_total="$(json_value counts.total_skills)"
 expected_files="$(json_value counts.total_files)"
 expected_design="$(json_value counts.awesome_design_md_files)"
+expected_criteria="$(json_value counts.google_seo_geo_criteria_files)"
+expected_criteria_library_files="$(json_value counts.google_seo_geo_library_files)"
 
 printf '=== Pack counts ===\n'
 printf 'total_skills=%s\n' "$(count_pack_skills)"
 printf 'total_files=%s\n' "$(count_pack_files)"
 printf 'design_md=%s\n' "$(count_design_md)"
+printf 'google_seo_geo_criteria=%s\n' "$(count_criteria_md)"
+printf 'google_seo_geo_library_files=%s\n' "$(count_criteria_library_files)"
 
 [ "$(count_pack_skills)" = "$expected_total" ]
 [ "$(count_pack_files)" = "$expected_files" ]
 [ "$(count_design_md)" = "$expected_design" ]
+[ "$(count_criteria_md)" = "$expected_criteria" ]
+[ "$(count_criteria_library_files)" = "$expected_criteria_library_files" ]
 
 printf '\n=== Categories ===\n'
 python - "$MANIFEST" "$PACK" <<'PY'
@@ -109,7 +125,7 @@ manifest=json.loads(Path(sys.argv[1]).read_text())
 pack=Path(sys.argv[2])
 counts=manifest.get('counts', {})
 for cat, expected in sorted(counts.items()):
-    if cat in {'total_skills','total_files','total_bytes','awesome_design_md_files'}:
+    if cat in {'total_skills','total_files','total_bytes','awesome_design_md_files','google_seo_geo_criteria_files','google_seo_geo_library_files'}:
         continue
     actual=sum(1 for _ in (pack/cat).glob('**/SKILL.md')) if (pack/cat).exists() else 0
     print(f'{cat}={actual}')
@@ -135,6 +151,11 @@ if [ "$INSTALLED" -eq 1 ]; then
     printf 'installed_library_design_md=%s\n' "$(find "$HERMES_HOME_DIR/skill-libraries/awesome-design-md" -name DESIGN.md -type f | wc -l | tr -d ' ')"
   else
     printf 'installed_library_design_md=0\n'
+  fi
+  if [ -d "$HERMES_HOME_DIR/skill-libraries/google-seo-geo-criteria-bank" ]; then
+    printf 'installed_google_seo_geo_criteria=%s\n' "$(find "$HERMES_HOME_DIR/skill-libraries/google-seo-geo-criteria-bank" -name '*.md' -type f | grep -Ev '/(README|Съдържание|SEO Completion Map|GEO Completion Map|00_Credibility_Standards_and_Note_Template)\.md$' | wc -l | tr -d ' ')"
+  else
+    printf 'installed_google_seo_geo_criteria=0\n'
   fi
 fi
 

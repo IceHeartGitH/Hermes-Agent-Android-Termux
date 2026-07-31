@@ -150,11 +150,11 @@ Termux fast `--version` PROJECT_ROOT repair: included
 ```
 
 
-## 6. Optional custom skills and DESIGN.md library
+## 6. Optional custom skills and libraries
 
-This repository also includes an optional public-safe custom skills pack. It is not installed by default.
+This repository also includes an optional public-safe custom skills pack and bundled reference libraries. They are not installed by default.
 
-The pack includes four OpenSEO-derived no-API workflow skills and two lightweight HKUDS/nanobot-derived Termux helper skills: `nanobot-tmux` and `nanobot-weather`.
+The pack includes OpenSEO-derived no-API workflow skills, lightweight HKUDS/nanobot-derived Termux helper skills, and three Google SEO/GEO inspection skills backed by a 387-file criteria bank.
 
 The files are downloaded together with this repository, so after running the install command above they are already available locally in the checkout:
 
@@ -166,9 +166,10 @@ custom-skills-library/
 Current bundled pack:
 
 ```text
-total custom skills: 189
-total skill files:   1920
+total custom skills: 192
+total skill files:   1923
 DESIGN.md entries:   74
+SEO/GEO criteria:    387
 ```
 
 Bundled categories:
@@ -186,7 +187,7 @@ custom-skills/github/   1 skills
 custom-skills/hermes/   2 skills
 custom-skills/hermes-desktop-plugins/   1 skills
 custom-skills/hermes-themes/   1 skills
-custom-skills/marketing/   41 skills
+custom-skills/marketing/   44 skills
 custom-skills/media/   4 skills
 custom-skills/mlops/   7 skills
 custom-skills/note-taking/   1 skills
@@ -199,7 +200,7 @@ custom-skills/software-development/   12 skills
 custom-skills/yuanbao/   1 skills
 ```
 
-The pack is exported from a proven Android Termux Hermes venv setup, but it is sanitized for public use. It excludes credentials, sessions, memory/profile files, cron outputs, private local paths, Obsidian/private workflow references, and runtime databases.
+The pack is exported from a proven Android Termux Hermes venv setup, but it is sanitized for public use. It excludes credentials, sessions, memory/profile files, cron outputs, private local paths, private workflow references, and runtime databases.
 
 Run the custom-skills commands from this repository checkout, not from your home directory or another project folder:
 
@@ -211,6 +212,12 @@ To preview available categories:
 
 ```sh
 cd ~/Hermes-Agent-Android-Termux && bash scripts/install-custom-skills.sh --list
+```
+
+To install the Google SEO/GEO inspection skills and 387-file criteria bank:
+
+```sh
+cd ~/Hermes-Agent-Android-Termux && bash scripts/install-custom-skills.sh --seo-geo
 ```
 
 To install all bundled custom skills after Hermes is installed:

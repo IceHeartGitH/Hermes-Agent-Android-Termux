@@ -1,0 +1,87 @@
+---
+project: Google SEO & GEO Criterions
+category: SEO
+group: Ecommerce / Product SEO
+created: 2026-07-31
+status: professional-inspection-ready-v1
+criterion_type: official_confirmed
+priority: high
+---
+
+# Merchant Listing Eligibility
+
+## 1. Какво е
+Merchant Listing Eligibility е SEO критерий/сигнал в областта practical SEO/GEO eligibility. Той показва какво трябва да е налично или правилно настроено, за да се увеличат максимално условията за crawl, indexability, ranking eligibility и/или GEO цитируемост.
+
+## 2. Достоверност
+- Тип: `official_confirmed`.
+- Надеждност: използва се в audit като официално потвърден критерий/control.
+- Важно: няма гаранция за 100% индексиране или AI цитиране; целта е максимално покриване на условията.
+
+## 3. Изисквания
+- Критерият трябва да има реална връзка с crawl, indexability, quality, UX, entity clarity или search appearance.
+- Да не противоречи на официални Google документи.
+- Да може да бъде проверен при сайт инспекция.
+- Да има ясно действие за корекция, ако липсва.
+
+## 4. Как да го приложим
+- Определи дали критерият е приложим за конкретния site/page type.
+- Провери текущото състояние с crawl, GSC, HTML или manual review.
+- Направи минималната корекция, която решава реалния проблем.
+- Не оптимизирай, ако е myth или not applicable.
+
+## 5. Как да го проверим
+- Manual audit.
+- GSC/HTML/crawl проверка според критерия.
+- Сравнение с Google документация.
+- Проверка след промяна.
+
+## 6. Какво отчита бъдещият skill при инспекция
+- passed: изискванията са налични и няма противоречиви сигнали.
+- partial: част от сигнала е налична, но има технически/съдържателен риск.
+- missing: липсва ключово изискване или има блокиращ проблем.
+- not_applicable: критерият не е приложим за този тип страница/сайт.
+
+## 6A. Audit evidence
+- JSON-LD / microdata markup в HTML.
+- Rich Results Test output.
+- Schema.org validator като допълнителна проверка.
+- GSC Enhancements report, ако е наличен.
+- Сравнение между markup и видимото съдържание на страницата.
+
+## 6B. Pass condition
+- Schema типът е релевантен и Google-supported за page type.
+- Required properties са валидни.
+- Markup описва видимо, вярно и актуално съдържание.
+
+## 6C. Fail condition
+- Липсват required properties или JSON-LD е невалиден.
+- Markup съдържа невидими, fake или несъвпадащи данни.
+- Използва се неподходящ/deprecated schema тип като SEO shortcut.
+
+## 6D. Fix recommendation
+- Избери правилния Google-supported schema type.
+- Попълни required/recommended properties с реални видими данни.
+- Премахни fake ratings, невидими FAQ и подвеждащ markup.
+- Тествай повторно с Rich Results Test.
+
+## 7. Добър пример
+Страницата покрива „Merchant Listing Eligibility“ с ясно видим, технически достъпен и проверим сигнал, който съответства на intent и Google насоки.
+
+## 8. Лош пример
+Страницата разчита на „Merchant Listing Eligibility“ само формално или го нарушава: сигналът липсва, противоречи на други SEO/GEO сигнали или не може да бъде проверен.
+
+## 9. Приоритет и риск
+- Приоритет: `high`.
+- Риск при неспазване: по-слаби условия за crawl, indexability, ranking eligibility, search appearance или GEO цитируемост според критерия.
+
+## 10. Връзки
+- [[Video Key Moments Eligibility]]
+- [[Translated Results Eligibility]]
+- [[Structured Data Eligibility]]
+
+## 11. Източници
+- Google Search Essentials: https://developers.google.com/search/docs/essentials
+- SEO Starter Guide: https://developers.google.com/search/docs/fundamentals/seo-starter-guide
+- Helpful content: https://developers.google.com/search/docs/fundamentals/creating-helpful-content
+- Google Search ecommerce: https://developers.google.com/search/docs/specialty/ecommerce

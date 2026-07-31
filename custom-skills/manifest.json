@@ -1,10 +1,11 @@
 {
   "name": "Hermes Agent Android Termux Custom Skills Pack",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Public-safe optional custom skills exported from a proven Android Termux Hermes venv setup. Runtime state, memories, sessions, credentials, and private local references are excluded.",
   "paths": {
     "skills": "custom-skills/",
-    "library": "custom-skills-library/awesome-design-md/"
+    "library": "custom-skills-library/awesome-design-md/",
+    "criteria_bank_library": "custom-skills-library/google-seo-geo-criteria-bank/"
   },
   "source": {
     "hermes_version": "0.19.0",
@@ -14,9 +15,9 @@
     "verified_date": "2026-07-30"
   },
   "counts": {
-    "total_skills": 189,
-    "total_files": 1920,
-    "total_bytes": 65745439,
+    "total_skills": 192,
+    "total_files": 1923,
+    "total_bytes": 65761806,
     "awesome_design_md_files": 74,
     "android": 3,
     "apple": 4,
@@ -30,7 +31,7 @@
     "hermes": 2,
     "hermes-desktop-plugins": 1,
     "hermes-themes": 1,
-    "marketing": 41,
+    "marketing": 44,
     "media": 4,
     "mlops": 7,
     "note-taking": 1,
@@ -40,7 +41,9 @@
     "smart-home": 1,
     "social-media": 1,
     "software-development": 12,
-    "yuanbao": 1
+    "yuanbao": 1,
+    "google_seo_geo_criteria_files": 387,
+    "google_seo_geo_library_files": 427
   },
   "packs": {
     "all": {
@@ -151,6 +154,9 @@
         "cro",
         "crux-performance-audit",
         "customer-research",
+        "google-geo-site-inspector",
+        "google-seo-geo-site-inspector",
+        "google-seo-site-inspector",
         "image",
         "launch",
         "marketing-ideas",
@@ -278,6 +284,16 @@
       ],
       "yuanbao": [
         "."
+      ]
+    },
+    "google-seo-geo-inspection": {
+      "marketing": [
+        "google-seo-site-inspector",
+        "google-geo-site-inspector",
+        "google-seo-geo-site-inspector"
+      ],
+      "libraries": [
+        "google-seo-geo-criteria-bank"
       ]
     }
   },
